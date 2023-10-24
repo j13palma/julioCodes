@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 body {
-  @apply h-full text-white bg-[#242424];
+  @apply h-full scroll-smooth bg-[#242424] text-white;
 }
 
 @layer components {
   .heroButton {
-    @apply px-6 py-2 border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
+    @apply rounded-full border-[#242424] px-6 py-2 text-xs uppercase tracking-widest text-gray-500 transition-all hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
   }
   .social-icon {
-    @apply hover:fill-[#f7ab0a]/40 fill-gray-500;
+    @apply fill-gray-500 hover:fill-[#f7ab0a]/40;
   }
 }
