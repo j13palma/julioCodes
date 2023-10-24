@@ -1,4 +1,4 @@
-import { About, Hero, Header, WorkExperience } from "@/components";
+import { About, Hero, Header, WorkExperience, Skills } from "@/components";
 import Image from "next/image";
 
 export default function Home() {
@@ -14,6 +14,9 @@ export default function Home() {
         </section>
         <section id="WorkExperience" className="snap-center">
           <WorkExperience />
+        </section>
+        <section id="Skills" className="snap-center">
+          <Skills />
         </section>
       </main>
     </div>
