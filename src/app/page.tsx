@@ -6,16 +6,19 @@ export default function Home() {
     <div className="z-0 h-screen snap-y snap-mandatory overflow-y-scroll">
       <Header />
       <main>
-        <section id="Hero" className="snap-start">
+        <section id="hero" className="snap-start">
           <Hero />
         </section>
-        <section id="About" className="snap-center">
+        <section id="about" className="snap-center">
           <About />
         </section>
-        <section id="WorkExperience" className="snap-center">
+        <section id="workexperience" className="snap-center">
           <WorkExperience />
         </section>
-        <section id="Skills" className="snap-center">
+        <section id="skills" className="snap-center">
+          <Skills />
+        </section>
+        <section id="projects" className="snap-center">
           <Skills />
         </section>
       </main>
