@@ -8,7 +8,12 @@ export type HeroProps = {};
 
 export default function Hero({}: HeroProps) {
   const [text, count] = useTypewriter({
-    words: ["Hi There, My Name is Julio!", "Creator.io", "<NatureBoy />"],
+    words: [
+      "Hi There, My Name is Julio!",
+      "Creator.io",
+      "<NatureBoy />",
+      "#WrenchGang",
+    ],
     loop: true,
     delaySpeed: 2000,
   });

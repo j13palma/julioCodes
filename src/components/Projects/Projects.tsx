@@ -15,7 +15,7 @@ export default function Projects({}: ProjectsProps) {
       className="relative z-0 mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left"
     >
       <SectionTitle title="Projects" />
-      <div className="relative z-10 flex w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll">
+      <div className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin relative z-10 flex w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll">
         {projects.map((project, i) => (
           <div
             key={Math.random()}

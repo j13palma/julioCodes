@@ -34,7 +34,7 @@ export default function ExperienceCard({}: ExperienceCardProps) {
           </div>
         </div>
         <p className="py-5 uppercase text-gray-500">Start-End</p>
-        <ul className="ml-5 h-[120px] list-disc space-y-2 overflow-y-scroll text-lg">
+        <ul className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin ml-5 h-[120px] list-disc space-y-2 overflow-y-scroll text-lg">
           <li>
             StuffStuff StuffStuff StuffStuff StuffStuff StuffStuff StuffStuff
             StuffStuff StuffStuff StuffStuff

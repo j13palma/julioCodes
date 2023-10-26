@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@formspark/use-formspark": "^0.1.39",
     "@heroicons/react": "^2.0.18",
     "framer-motion": "^10.16.4",
     "next": "13.5.5",
@@ -16,7 +17,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
     "react-simple-typewriter": "^5.0.1",
-    "react-social-icons": "^6.4.0"
+    "react-social-icons": "^6.4.0",
+    "tailwind-scrollbar": "^3.0.5"
   },
   "devDependencies": {
     "@types/node": "^20",
