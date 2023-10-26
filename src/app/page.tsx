@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   About,
   Hero,
@@ -7,7 +8,7 @@ import {
   Projects,
   Contact,
 } from "@/components";
-import Image from "next/image";
+import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
@@ -33,6 +34,16 @@ export default function Home() {
           <Contact />
         </section>
       </main>
+      {/* TODO: Change to scroll to top */}
+      <Link href="#hero">
+        <footer className="sticky bottom-5 w-full cursor-pointer">
+          <div className="flex items-center justify-center">
+            <button className=" h-10 w-10 rounded-full grayscale filter hover:grayscale-0">
+              <ChevronUpIcon />
+            </button>
+          </div>
+        </footer>
+      </Link>
     </div>
   );
 }
