@@ -101,7 +101,7 @@ export default function Contact({}: ContactProps) {
             className="contact-input"
             placeholder="Message"
             cols={30}
-            rows={10}
+            rows={5}
             required
             onChange={() => setSubmitted(false)}
           />

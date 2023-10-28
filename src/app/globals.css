@@ -14,6 +14,6 @@ body {
     @apply rounded-full border border-[#242424] px-6 py-2 text-xs uppercase tracking-widest text-gray-500 transition-all hover:border hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
   }
   .social-icon {
-    @apply fill-gray-500 hover:fill-[#f7ab0a]/40;
+    @apply fill-gray-500 group-hover:fill-[#f7ab0a]/40;
   }
 }

@@ -12,7 +12,7 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
-    <div className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll">
+    <div className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth">
       <Header />
       <main>
         <section id="hero" className="snap-start">
@@ -21,7 +21,7 @@ export default function Home() {
         <section id="about" className="snap-center">
           <About />
         </section>
-        <section id="workexperience" className="snap-center">
+        <section id="experience" className="snap-center">
           <WorkExperience />
         </section>
         <section id="skills" className="snap-center">
@@ -35,15 +35,15 @@ export default function Home() {
         </section>
       </main>
       {/* TODO: Change to scroll to top */}
-      <Link href="#hero">
-        <footer className="sticky bottom-5 w-full cursor-pointer">
-          <div className="flex items-center justify-center">
+      <footer className="sticky bottom-5 w-full cursor-pointer">
+        <div className="flex items-center justify-center">
+          <Link href="#hero">
             <button className=" h-10 w-10 rounded-full grayscale filter hover:grayscale-0">
               <ChevronUpIcon />
             </button>
-          </div>
-        </footer>
-      </Link>
+          </Link>
+        </div>
+      </footer>
     </div>
   );
 }

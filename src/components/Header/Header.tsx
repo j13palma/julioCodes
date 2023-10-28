@@ -38,6 +38,7 @@ function Header({}: HeaderProps) {
           initial={{ x: 500, opacity: 0, scale: 0.5 }}
           animate={{ x: 0, opacity: 1, scale: 1 }}
           transition={{ duration: 1.5 }}
+          className="group"
         >
           <SocialIcon
             url="cursor-pointer"
@@ -46,7 +47,7 @@ function Header({}: HeaderProps) {
             bgColor="transparent"
             className="social-icon"
           />
-          <p className="hidden text-sm uppercase text-gray-400 md:inline-flex">
+          <p className="hidden text-sm uppercase text-gray-400 group-hover:text-[#f7ab0a]/40 md:inline-flex">
             Let&apos;s connect
           </p>
         </motion.div>
