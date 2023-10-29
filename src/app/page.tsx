@@ -35,14 +35,12 @@ export default function Home() {
         </section>
       </main>
       {/* TODO: Change to scroll to top */}
-      <footer className="sticky bottom-5 w-full cursor-pointer">
-        <div className="flex items-center justify-center">
-          <Link href="#hero">
-            <button className=" h-10 w-10 rounded-full grayscale filter hover:grayscale-0">
-              <ChevronUpIcon />
-            </button>
-          </Link>
-        </div>
+      <footer className="sticky bottom-5 flex w-full cursor-pointer items-center justify-center">
+        <Link href="#hero">
+          <div className=" h-10 w-10 animate-bounce rounded-full grayscale filter hover:grayscale-0">
+            <ChevronUpIcon />
+          </div>
+        </Link>
       </footer>
     </div>
   );

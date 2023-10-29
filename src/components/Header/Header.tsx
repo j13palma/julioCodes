@@ -33,25 +33,26 @@ function Header({}: HeaderProps) {
           className="social-icon"
         />
       </motion.div>
-      <Link href="#contact">
-        <motion.div
-          initial={{ x: 500, opacity: 0, scale: 0.5 }}
-          animate={{ x: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 1.5 }}
-          className="group"
-        >
-          <SocialIcon
-            url="cursor-pointer"
-            network="email"
-            fgColor="inherit"
-            bgColor="transparent"
-            className="social-icon"
-          />
+      <motion.div
+        initial={{ x: 500, opacity: 0, scale: 0.5 }}
+        animate={{ x: 0, opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5 }}
+        className="group"
+      >
+        <SocialIcon
+          url="cursor-pointer"
+          network="email"
+          fgColor="inherit"
+          bgColor="transparent"
+          className="social-icon"
+          href="#contact"
+        />
+        <Link href="#contact">
           <p className="hidden text-sm uppercase text-gray-400 group-hover:text-[#f7ab0a]/40 md:inline-flex">
             Let&apos;s connect
           </p>
-        </motion.div>
-      </Link>
+        </Link>
+      </motion.div>
     </header>
   );
 }
