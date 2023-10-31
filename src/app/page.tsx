@@ -12,7 +12,7 @@ import { ChevronUpIcon } from "@heroicons/react/24/outline";
 
 export default function Home() {
   return (
-    <div className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth">
+    <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
       <Header />
       <main>
         <section id="hero" className="snap-start">
