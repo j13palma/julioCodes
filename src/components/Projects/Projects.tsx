@@ -15,7 +15,7 @@ export default function Projects({}: ProjectsProps) {
       className="relative z-0 mx-auto flex h-screen max-w-full flex-col items-center justify-evenly overflow-hidden px-10 text-left"
     >
       <SectionTitle title="Projects" />
-      <div className="scrollbar-track-gray-400/40 scrollbar-thumb-white scrollbar-thin relative z-10 flex w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll">
+      <div className="relative z-10 flex w-full snap-x snap-mandatory overflow-y-hidden overflow-x-scroll scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
         {projects.map((project, i) => (
           <div
             key={Math.random()}
@@ -32,7 +32,6 @@ export default function Projects({}: ProjectsProps) {
                 src="/Images/webApp.png"
                 alt="Web app"
                 fill
-                objectFit="contain"
                 className="relative object-cover"
               />
             </motion.div>

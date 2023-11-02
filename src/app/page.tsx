@@ -9,6 +9,23 @@ import {
   Contact,
 } from "@/components";
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
+import { client } from "../../sanity/lib/client";
+import {
+  experience,
+  pageInfo,
+  project,
+  skill,
+  social,
+} from "../../sanity/queries";
+import { Experience, PageInfo, Project, Skill, Social } from "../../typings";
+
+const experiences: Experience[] = await client.fetch(experience);
+const pageInformation: PageInfo[] = await client.fetch(pageInfo);
+const projects: Project[] = await client.fetch(project);
+const skills: Skill[] = await client.fetch(skill);
+const socials: Social[] = await client.fetch(social);
+
+console.log(experiences);
 
 export default function Home() {
   return (
