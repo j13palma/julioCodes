@@ -16,7 +16,7 @@ interface Image {
 export interface Experience extends SanityBody {
   _type: "experience";
   company: string;
-  companyImage: Image;
+  companyImg: Image;
   dateEnded: date;
   dateStarted: date;
   isCurrentlyWorkingHere: boolean;
@@ -54,7 +54,7 @@ export interface Social extends SanityBody {
 
 export interface Skill extends SanityBody {
   _type: "skill";
-  image: Image;
+  img: Image;
   progress: number;
   title: string;
 }

@@ -22,30 +22,27 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
         viewport={{ once: true }}
         className="relative h-32 w-32 overflow-hidden rounded-full object-center xl:h-[200px] xl:w-[200px]"
       >
-        {experience.companyImage && (
-          <Image
-            src={urlForImage(experience.companyImage).url()}
-            fill
-            alt="AI Generated Pic"
-            className="object-cover"
-          />
-        )}
+        <Image
+          src={urlForImage(experience.companyImg).url()}
+          fill
+          alt="AI Generated Pic"
+          className="object-cover"
+        />
       </motion.div>
       <div className="px-0 md:px-10">
         <h4 className="text-4xl font-light">{experience.jobTitle}</h4>
         <p className="my-2 space-x-2 font-bold">{experience.company}</p>
         <div>
-          {experience.companyImage &&
-            experience.technologies.map((tech) => (
-              <div key={tech._id} className="relative h-10 w-10 rounded-full">
-                <Image
-                  src={urlForImage(tech.image).url()}
-                  alt="JS Badge"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          {experience.technologies.map((tech) => (
+            <div key={tech._id} className="relative h-10 w-10 rounded-full">
+              <Image
+                src={urlForImage(tech.img).url()}
+                alt="JS Badge"
+                fill
+                className="object-cover"
+              />
+            </div>
+          ))}
         </div>
         <p className="py-5 uppercase text-gray-500">
           {formattedDate(experience.dateStarted)} -{" "}
