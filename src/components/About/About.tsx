@@ -2,9 +2,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { SectionTitle } from "..";
+import { PageInfo } from "../../../typings";
+import { urlForImage } from "../../../sanity/lib/image";
 
-export type AboutProps = {};
-export default function About({}: AboutProps) {
+export type AboutProps = { pageInfo: PageInfo };
+
+export default function About({ pageInfo }: AboutProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -21,7 +24,7 @@ export default function About({}: AboutProps) {
         className="md:h-95 relative mx-auto mb-20 mt-0 h-56 w-56 flex-shrink-0 md:mb-0 md:w-64 xl:h-[600px] xl:w-[500px]"
       >
         <Image
-          src="/Images/PALMA.JPG"
+          src={urlForImage(pageInfo.profilePic).url()}
           alt="Julio Palma Casual Pic"
           fill
           className="rounded-full object-cover md:rounded-lg"
@@ -35,7 +38,7 @@ export default function About({}: AboutProps) {
           </span>{" "}
           background
         </h4>
-        <p className="text-base">words</p>
+        <p className="text-base">{pageInfo.backgroundInfo}</p>
       </div>
     </motion.div>
   );

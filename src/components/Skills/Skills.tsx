@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { SectionTitle, Skill } from "..";
+import { Skill as SkillType } from "../../../typings";
 
-export type SkillsProps = {};
+export type SkillsProps = { skills: SkillType[] };
 
-export default function Skills({}: SkillsProps) {
+export default function Skills({ skills }: SkillsProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -17,16 +18,12 @@ export default function Skills({}: SkillsProps) {
         Hover over skills for current proficiency
       </h3>
       <div className="grid grid-cols-4 gap-5">
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
-        <Skill direction="Left" />
+        {skills.slice(0, skills.length / 2).map((skill) => (
+          <Skill skill={skill} key={skill._id} direction="Left" />
+        ))}
+        {skills.slice(skills.length / 2, skills.length).map((skill) => (
+          <Skill skill={skill} key={skill._id} direction="Right" />
+        ))}
       </div>
     </motion.div>
   );

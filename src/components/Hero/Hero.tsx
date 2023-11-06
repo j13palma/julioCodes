@@ -3,17 +3,18 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { PulsingCircles } from "..";
 import Image from "next/image";
 import Link from "next/link";
+import { PageInfo } from "../../../typings";
+import { urlForImage } from "../../../sanity/lib/image";
 
-export type HeroProps = {};
+export type HeroProps = {
+  pageInfo: PageInfo;
+};
 
-export default function Hero({}: HeroProps) {
+export default function Hero({ pageInfo }: HeroProps) {
+  console.log(pageInfo);
+
   const [text, count] = useTypewriter({
-    words: [
-      "Hi There, My Name is Julio!",
-      "Creator.io",
-      "<NatureBoy />",
-      "#WrenchGang",
-    ],
+    words: pageInfo.banner,
     loop: true,
     delaySpeed: 2000,
   });
@@ -21,7 +22,7 @@ export default function Hero({}: HeroProps) {
     <div className="flex h-screen flex-col items-center justify-center space-y-8 overflow-hidden text-center">
       <PulsingCircles />
       <Image
-        src="/Images/PALMAI.JPG"
+        src={urlForImage(pageInfo.heroImg).url()}
         alt="Julio Palma AI Generated Pic"
         width={150}
         height={150}
@@ -29,7 +30,7 @@ export default function Hero({}: HeroProps) {
       />
       <div className="z-20">
         <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
-          Software Engineer
+          {pageInfo.role}
         </h2>
         <h1 className="px-10 text-4xl font-semibold lg:text-5xl">
           <span>{text}</span>

@@ -19,36 +19,51 @@ import {
 } from "../../sanity/queries";
 import { Experience, PageInfo, Project, Skill, Social } from "../../typings";
 
-const experiences: Experience[] = await client.fetch(experience);
-const pageInformation: PageInfo[] = await client.fetch(pageInfo);
-const projects: Project[] = await client.fetch(project);
-const skills: Skill[] = await client.fetch(skill);
-const socials: Social[] = await client.fetch(social);
+export const revalidate = 60;
 
-console.log(experiences);
+async function getData() {
+  const experiences: Experience[] = await client.fetch(experience);
+  const pageInformation: PageInfo = await client.fetch(pageInfo);
+  const projects: Project[] = await client.fetch(project);
+  const skills: Skill[] = await client.fetch(skill);
+  const socials: Social[] = await client.fetch(social);
 
-export default function Home() {
+  return {
+    props: {
+      experiences,
+      pageInformation,
+      projects,
+      skills,
+      socials,
+    },
+  };
+}
+
+export default async function Home() {
+  const { experiences, pageInformation, projects, skills, socials } = (
+    await getData()
+  ).props;
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
-      <Header />
+      <Header socials={socials} />
       <main>
         <section id="hero" className="snap-start">
-          <Hero />
+          <Hero pageInfo={pageInformation} />
         </section>
         <section id="about" className="snap-center">
-          <About />
+          <About pageInfo={pageInformation} />
         </section>
         <section id="experience" className="snap-center">
-          <WorkExperience />
+          <WorkExperience experiences={experiences} />
         </section>
         <section id="skills" className="snap-center">
-          <Skills />
+          <Skills skills={skills} />
         </section>
         <section id="projects" className="snap-center">
-          <Projects />
+          <Projects projects={projects} />
         </section>
         <section id="contact" className="snap-center">
-          <Contact />
+          <Contact pageInfo={pageInformation} />
         </section>
       </main>
       {/* TODO: Change to scroll to top */}

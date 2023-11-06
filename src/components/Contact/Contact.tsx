@@ -13,6 +13,7 @@ import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 
 import { SectionTitle } from "..";
+import { PageInfo } from "../../../typings";
 
 const FORMSPARK_FORM_ID = "PEUv9sGu";
 
@@ -23,9 +24,9 @@ type Inputs = {
   message: string;
 };
 
-export type ContactProps = {};
+export type ContactProps = { pageInfo: PageInfo };
 
-export default function Contact({}: ContactProps) {
+export default function Contact({ pageInfo }: ContactProps) {
   const [submit, submitting] = useFormspark({
     formId: FORMSPARK_FORM_ID,
   });
@@ -55,15 +56,15 @@ export default function Contact({}: ContactProps) {
         <div className="space-y-10">
           <div className="flex items-center justify-center space-x-5">
             <PhoneIcon className="h-7 animate-bounce text-[#f7ab0a]" />
-            <p className="text-2xl">(978) 237-0901</p>
+            <p className="text-2xl">{pageInfo.phone}</p>
           </div>
           <div className="group flex items-center justify-center space-x-5">
-            <EmailIcon className="animate-spin-slow h-7 text-[#f7ab0a]" />
-            <p className="text-2xl">JPalma@gmail.com</p>
+            <EmailIcon className="h-7 animate-spin-slow text-[#f7ab0a]" />
+            <p className="text-2xl">{pageInfo.email}</p>
           </div>
           <div className="flex items-center justify-center space-x-5">
             <MapIcon className="h-7 animate-pulse text-[#f7ab0a]" />
-            <p className="text-2xl">Charlotte, NC</p>
+            <p className="text-2xl">{pageInfo.address}</p>
           </div>
         </div>
         <form

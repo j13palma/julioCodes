@@ -2,11 +2,12 @@
 import { motion } from "framer-motion";
 import { SectionTitle } from "..";
 import Image from "next/image";
+import { Project } from "../../../typings";
+import { urlForImage } from "../../../sanity/lib/image";
 
-export type ProjectsProps = {};
+export type ProjectsProps = { projects: Project[] };
 
-export default function Projects({}: ProjectsProps) {
-  const projects = [1, 2, 3, 4];
+export default function Projects({ projects }: ProjectsProps) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -29,7 +30,7 @@ export default function Projects({}: ProjectsProps) {
               className="relative mx-auto mb-10 mt-5 h-full w-full flex-shrink-0 "
             >
               <Image
-                src="/Images/webApp.png"
+                src={urlForImage(project.img).url()}
                 alt="Web app"
                 fill
                 className="relative object-cover"
@@ -40,11 +41,20 @@ export default function Projects({}: ProjectsProps) {
                 <span className="underline decoration-[#f7ab0a]/50">
                   Case Study {i + 1} of {projects.length}:
                 </span>{" "}
-                sometitle
+                {project.title}
               </h4>
+              {project.technologies?.map((tech) => (
+                <div key={tech._id} className="relative h-10 w-10 rounded-full">
+                  <Image
+                    src={urlForImage(tech.image).url()}
+                    alt="JS Badge"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
               <p className="text-center text-lg md:text-left">
-                {" "}
-                alot of words describing a project
+                {project.summary}
               </p>
             </div>
           </div>

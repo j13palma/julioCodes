@@ -2,10 +2,13 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
+import { Social } from "../../../typings";
 
-export type HeaderProps = {};
+export type HeaderProps = {
+  socials: Social[];
+};
 
-function Header({}: HeaderProps) {
+function Header({ socials }: HeaderProps) {
   return (
     <header className="sticky top-0 z-10 mx-auto flex max-w-7xl items-start justify-between md:px-5 xl:items-center">
       <motion.div
@@ -14,24 +17,15 @@ function Header({}: HeaderProps) {
         transition={{ duration: 1.5 }}
         className="flex flex-row items-center"
       >
-        <SocialIcon
-          url="https://github.com/j13palma"
-          fgColor="inherit"
-          bgColor="transparent"
-          className="social-icon"
-        />
-        <SocialIcon
-          url="https://www.linkedin.com/in/j13hernandez/"
-          fgColor="inherit"
-          bgColor="transparent"
-          className="social-icon"
-        />
-        <SocialIcon
-          url="https://www.youtube.com/@FromNoneToOne"
-          fgColor="inherit"
-          bgColor="transparent"
-          className="social-icon"
-        />
+        {socials.map((social) => (
+          <SocialIcon
+            key={social._id}
+            url={social.url}
+            fgColor="inherit"
+            bgColor="transparent"
+            className="social-icon"
+          />
+        ))}
       </motion.div>
       <motion.div
         initial={{ x: 500, opacity: 0, scale: 0.5 }}
