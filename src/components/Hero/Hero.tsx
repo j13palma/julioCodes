@@ -28,28 +28,28 @@ export default function Hero({ pageInfo }: HeroProps) {
         height={150}
         className="relative mx-auto mt-0 rounded-full"
       />
-      <div className="z-20">
-        <h2 className="pb-2 text-sm uppercase tracking-[15px] text-gray-500">
-          {pageInfo.role}
-        </h2>
-        <h1 className="px-10 text-4xl font-semibold lg:text-5xl">
-          <span>{text}</span>
-          <Cursor cursorColor="#F7AB0A" />
-        </h1>
-        <div className="pt-5">
-          <Link href="#about">
-            <button className="hero-button">About</button>
-          </Link>
-          <Link href="#experience">
-            <button className="hero-button">Experience</button>
-          </Link>
-          <Link href="#skills">
-            <button className="hero-button">Skills</button>
-          </Link>
-          <Link href="#projects">
-            <button className="hero-button">Projects</button>
-          </Link>
-        </div>
+
+      <h2 className="z-20 pb-2 text-sm uppercase tracking-[15px] text-gray-500">
+        {pageInfo.role}
+      </h2>
+      <h1 className="h-32 px-9 text-4xl font-semibold lg:text-5xl">
+        <span>{text}</span>
+        {/* <span>#WrenchGang</span> */}
+        <Cursor cursorColor="#F7AB0A" />
+      </h1>
+      <div className="bottom-3 z-20 mx-auto flex flex-col gap-1 px-1 md:flex-row md:pt-5">
+        <Link href="#about">
+          <button className="hero-button">About</button>
+        </Link>
+        <Link href="#experience">
+          <button className="hero-button">Experience</button>
+        </Link>
+        <Link href="#skills">
+          <button className="hero-button">Skills</button>
+        </Link>
+        <Link href="#projects">
+          <button className="hero-button">Projects</button>
+        </Link>
       </div>
     </div>
   );

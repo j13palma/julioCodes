@@ -46,7 +46,7 @@ export default function Projects({ projects }: ProjectsProps) {
               {project.technologies?.map((tech) => (
                 <div key={tech._id} className="relative h-10 w-10 rounded-full">
                   <Image
-                    src={urlForImage(tech.image).url()}
+                    src={urlForImage(tech.img).url()}
                     alt="JS Badge"
                     fill
                     className="object-cover"

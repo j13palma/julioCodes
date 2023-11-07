@@ -66,12 +66,15 @@ export default async function Home() {
           <Contact pageInfo={pageInformation} />
         </section>
       </main>
-      {/* TODO: Change to scroll to top */}
-      <footer className="sticky bottom-5 flex w-full cursor-pointer items-center justify-center">
-        <Link href="#hero">
-          <div className=" h-10 w-10 animate-bounce rounded-full grayscale filter hover:grayscale-0">
-            <ChevronUpIcon />
+      <footer className="sticky bottom-3 mx-auto flex w-full max-w-7xl cursor-pointer items-center justify-end pr-3">
+        <Link
+          href="#hero"
+          className="flex flex-col items-center justify-center"
+        >
+          <div className=" h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
+            <ChevronUpIcon className="fill-gray-400" />
           </div>
+          <p className="text-xs text-gray-500">To the Top!</p>
         </Link>
       </footer>
     </div>
