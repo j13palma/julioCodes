@@ -24,6 +24,7 @@ function Header({ socials }: HeaderProps) {
             fgColor="inherit"
             bgColor="transparent"
             className="social-icon"
+            target="_blank"
           />
         ))}
       </motion.div>

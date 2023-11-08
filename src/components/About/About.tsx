@@ -13,7 +13,7 @@ export default function About({ pageInfo }: AboutProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start px-10 pb-4 pt-10 text-center  md:text-left"
+      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start px-10 pb-4 pt-10 text-center md:text-left"
     >
       <SectionTitle title="About" />
       <div className="md:my-auto md:flex">
