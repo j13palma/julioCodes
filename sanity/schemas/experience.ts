@@ -21,7 +21,7 @@ export default defineType({
     {
       name: "company",
       title: "Company",
-      type: "text",
+      type: "string",
     },
     {
       name: "dateStarted",

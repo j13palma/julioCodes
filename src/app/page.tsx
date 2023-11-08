@@ -69,12 +69,14 @@ export default async function Home() {
       <footer className="sticky bottom-3 mx-auto flex w-full max-w-7xl cursor-pointer items-center justify-end pr-3">
         <Link
           href="#hero"
-          className="flex flex-col items-center justify-center"
+          className="group flex flex-col items-center justify-center"
         >
           <div className=" h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
             <ChevronUpIcon className="fill-gray-400" />
           </div>
-          <p className="text-xs text-gray-500">To the Top!</p>
+          <p className="text-xs text-gray-500 opacity-100 group-hover:opacity-100 md:opacity-0">
+            To the Top!
+          </p>
         </Link>
       </footer>
     </div>

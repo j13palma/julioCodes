@@ -38,7 +38,7 @@ export default function About({ pageInfo }: AboutProps) {
             <span className="text-xl underline decoration-[#f7ab0a]/50">
               little
             </span>{" "}
-            bit about me.
+            bit about Julio.
           </h4>
           <p className="text-base">{pageInfo.backgroundInfo}</p>
         </div>

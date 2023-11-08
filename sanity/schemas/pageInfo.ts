@@ -27,7 +27,7 @@ export default defineType({
     {
       name: "backgroundInfo",
       title: "BackgroundInformation",
-      type: "string",
+      type: "text",
     },
     {
       name: "profilePic",
