@@ -18,11 +18,11 @@ export default function Projects({ projects }: ProjectsProps) {
       <SectionTitle title="Projects" />
       <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
         {projects.map((project, i) => (
-          <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white/40 hover:opacity-100 md:w-[600px] xl:max-w-[900px]">
-            <div
-              key={project._id}
-              className="relative flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-start space-y-1"
-            >
+          <article
+            className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white/40 hover:opacity-100 md:w-[600px] xl:max-w-[900px]"
+            key={project._id}
+          >
+            <div className="relative flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-start space-y-1">
               <motion.div
                 initial={{ y: -200, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
