@@ -11,8 +11,6 @@ export type HeroProps = {
 };
 
 export default function Hero({ pageInfo }: HeroProps) {
-  console.log(pageInfo);
-
   const [text, count] = useTypewriter({
     words: pageInfo.banner,
     loop: true,

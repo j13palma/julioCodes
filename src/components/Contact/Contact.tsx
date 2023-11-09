@@ -43,10 +43,10 @@ export default function Contact({ pageInfo }: ContactProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-full max-w-7xl flex-col items-center justify-start px-10 py-10 text-left"
+      className="relative mx-auto flex h-full max-w-7xl flex-col items-center justify-start px-10 py-10 text-left md:h-screen"
     >
       <SectionTitle title="Contact Me" />
-      <div className="flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
+      <div className="mt-5 flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
         <h4 className="text-center text-4xl font-semibold">
           <span className="underline decoration-[#f7ab0a]/50">
             Let&apos;s talk
