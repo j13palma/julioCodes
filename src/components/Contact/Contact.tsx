@@ -43,10 +43,10 @@ export default function Contact({ pageInfo }: ContactProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-[2000px] flex-col items-center justify-evenly overflow-hidden px-10 text-center md:flex-row md:text-left xl:flex-row xl:space-y-0 xl:px-10"
+      className="relative mx-auto flex h-full max-w-7xl flex-col items-center justify-start px-10 py-10 text-left"
     >
       <SectionTitle title="Contact Me" />
-      <div className="flex flex-col space-y-10">
+      <div className="flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
         <h4 className="text-center text-4xl font-semibold">
           <span className="underline decoration-[#f7ab0a]/50">
             Let&apos;s talk
@@ -54,27 +54,27 @@ export default function Contact({ pageInfo }: ContactProps) {
           about your business needs and how I can help satisfy them.
         </h4>
         <div className="space-y-10">
-          <div className="flex items-center justify-center space-x-5">
+          <div className="flex items-center justify-center space-x-2">
             <PhoneIcon className="h-7 animate-bounce text-[#f7ab0a]" />
             <p className="text-2xl">{pageInfo.phone}</p>
           </div>
-          <div className="group flex items-center justify-center space-x-5">
+          <div className="group flex items-center justify-center space-x-2">
             <EmailIcon className="h-7 animate-spin-slow text-[#f7ab0a]" />
             <p className="text-2xl">{pageInfo.email}</p>
           </div>
-          <div className="flex items-center justify-center space-x-5">
+          <div className="flex items-center justify-center space-x-2">
             <MapIcon className="h-7 animate-pulse text-[#f7ab0a]" />
             <p className="text-2xl">{pageInfo.address}</p>
           </div>
         </div>
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="mx-auto flex w-fit flex-col space-y-3"
+          className="mx-auto flex w-full flex-col space-y-3"
         >
-          <div className="flex space-x-2">
+          <div className="flex flex-col gap-3 md:flex-row">
             <input
               {...register("name")}
-              className="contact-input"
+              className="contact-input w-full"
               placeholder="Name"
               type="text"
               required
@@ -82,7 +82,7 @@ export default function Contact({ pageInfo }: ContactProps) {
             />
             <input
               {...register("email")}
-              className="contact-input"
+              className="contact-input w-full"
               placeholder="Email"
               type="email"
               required

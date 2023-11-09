@@ -74,7 +74,7 @@ export default async function Home() {
           <div className=" h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
             <ChevronUpIcon className="fill-gray-400" />
           </div>
-          <p className="text-xs text-gray-500 opacity-100 group-hover:opacity-100 md:opacity-0">
+          <p className="text-xs text-gray-500 opacity-0 group-hover:opacity-0 md:opacity-100">
             To the Top!
           </p>
         </Link>

@@ -1,3 +1,3 @@
-import Skill, { SkillProps } from "./Skill";
+import Skill, { SkillBar, SkillProps } from "./Skill";
 
-export { Skill, type SkillProps };
+export { Skill, SkillBar, type SkillProps };

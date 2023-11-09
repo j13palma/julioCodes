@@ -15,9 +15,10 @@ export default function Skills({ skills }: SkillsProps) {
     >
       <SectionTitle title="Skills" />
       <h3 className="text-sm uppercase tracking-[3px] text-gray-500">
-        Hover over skills for current proficiency
+        <span className="hidden md:block">Hover over</span>
+        <span className="md:hidden">Tap on</span> skills for current proficiency
       </h3>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-4 gap-2 px-5">
         {skills.slice(0, skills.length / 2).map((skill) => (
           <Skill skill={skill} key={skill._id} direction="Left" />
         ))}
