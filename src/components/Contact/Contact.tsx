@@ -48,22 +48,22 @@ export default function Contact({ pageInfo }: ContactProps) {
       <SectionTitle title="Contact Me" />
       <div className="mt-5 flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
         <h4 className="text-center text-4xl font-semibold">
-          <span className="underline decoration-[#f7ab0a]/50">
+          <span className="underline decoration-[#FB8500]/50">
             Let&apos;s talk
           </span>{" "}
           about your business needs and how I can help satisfy them.
         </h4>
         <div className="space-y-10">
           <div className="flex items-center justify-center space-x-2">
-            <PhoneIcon className="h-7 animate-bounce text-[#f7ab0a]" />
+            <PhoneIcon className="h-7 animate-bounce text-[#FB8500]" />
             <p className="text-2xl">{pageInfo.phone}</p>
           </div>
           <div className="group flex items-center justify-center space-x-2">
-            <EmailIcon className="h-7 animate-spin-slow text-[#f7ab0a]" />
+            <EmailIcon className="h-7 animate-spin-slow text-[#FB8500]" />
             <p className="text-2xl">{pageInfo.email}</p>
           </div>
           <div className="flex items-center justify-center space-x-2">
-            <MapIcon className="h-7 animate-pulse text-[#f7ab0a]" />
+            <MapIcon className="h-7 animate-pulse text-[#FB8500]" />
             <p className="text-2xl">{pageInfo.address}</p>
           </div>
         </div>
@@ -107,7 +107,7 @@ export default function Contact({ pageInfo }: ContactProps) {
             onChange={() => setSubmitted(false)}
           />
           <button
-            className="rounded-md bg-[#f7ab0a]/40 px-10 py-5 text-lg font-bold transition-all enabled:hover:bg-[#f7ab0a]"
+            className="rounded-md bg-[#FB8500]/40 px-10 py-5 text-lg font-bold transition-all enabled:hover:bg-[#FB8500]"
             disabled={submitting || submitted}
             type="submit"
           >

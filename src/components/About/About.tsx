@@ -32,10 +32,10 @@ export default function About({ pageInfo }: AboutProps) {
           />
           d
         </motion.div>
-        <div className="space-y-1 px-0 md:px-10">
+        <div className="flex flex-col justify-center space-y-1 px-0 md:px-10">
           <h4 className="text-4xl font-semibold">
             A{" "}
-            <span className="text-xl underline decoration-[#f7ab0a]/50">
+            <span className="text-xl underline decoration-[#FB8500]/50">
               little
             </span>{" "}
             bit about Julio.

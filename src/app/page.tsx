@@ -44,7 +44,7 @@ export default async function Home() {
     await getData()
   ).props;
   return (
-    <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
+    <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
       <Header socials={socials} />
       <main>
         <section id="hero" className="snap-start">
@@ -72,9 +72,9 @@ export default async function Home() {
           className="group flex flex-col items-center justify-center"
         >
           <div className=" h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
-            <ChevronUpIcon className="fill-gray-400" />
+            <ChevronUpIcon className="fill-[#023047]" />
           </div>
-          <p className="text-xs text-gray-500 opacity-0 group-hover:opacity-0 md:opacity-100">
+          <p className="text-xs text-[#023047] opacity-0 group-hover:opacity-0 md:opacity-100">
             To the Top!
           </p>
         </Link>

@@ -16,10 +16,10 @@ export default function Projects({ projects }: ProjectsProps) {
       className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pt-10 text-left"
     >
       <SectionTitle title="Projects" />
-      <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
+      <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
         {projects.map((project, i) => (
           <article
-            className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white/40 hover:opacity-100 md:w-[600px] xl:max-w-[900px]"
+            className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white hover:opacity-100 md:w-[600px] xl:max-w-[900px]"
             key={project._id}
           >
             <div className="relative flex h-full w-full flex-shrink-0 snap-center flex-col items-center justify-start space-y-1">
@@ -39,7 +39,7 @@ export default function Projects({ projects }: ProjectsProps) {
               </motion.div>
               <div className="max-w-[280px] space-y-5 px-5 md:max-w-md md:px-10 lg:max-w-lg">
                 <h4 className="text-center text-4xl font-semibold">
-                  <span className="underline decoration-[#f7ab0a]/50">
+                  <span className="underline decoration-[#FB8500]/50">
                     Case Study {i + 1} of {projects.length}:
                   </span>{" "}
                   {project.title}
@@ -55,7 +55,7 @@ export default function Projects({ projects }: ProjectsProps) {
         ))}
       </div>
 
-      <div className="absolute left-0 top-[30%] -z-10 h-[500px] w-full -skew-y-12 bg-[#f7ab0a]/10" />
+      <div className="absolute left-0 top-[30%] -z-10 h-[500px] w-full -skew-y-12 bg-[#FB8500]/10" />
     </motion.div>
   );
 }

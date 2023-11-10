@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 body {
-  @apply h-full scroll-smooth bg-[#242424] text-white;
+  @apply h-full scroll-smooth bg-slate-300 text-[#023047];
 }
 
 @layer components {
   .contact-input {
-    @apply rounded-md border-b border-[#242424] bg-slate-400/10 px-6 py-4 text-gray-400 placeholder-gray-500 outline-none transition-all hover:border-[#f7ab0a]/40 focus:border-[#f7ab0a]/40 focus:text-white;
+    @apply rounded-md border-b border-[#242424] bg-slate-400/10 px-6 py-4 text-[#023047] placeholder-[#023047] outline-none transition-all hover:border-[#FB8500] focus:border-[#FB8500] focus:text-[#FB8500];
   }
   .hero-button {
-    @apply rounded-full border border-[#242424] bg-slate-500/10 px-6 py-2 text-xs uppercase tracking-widest text-gray-400 transition-all hover:border hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
+    @apply rounded-full border border-[#242424] bg-slate-500/10 px-6 py-2 text-xs uppercase tracking-widest text-[#023047] transition-all hover:border hover:border-[#FB8500] hover:text-[#FB8500];
   }
   .social-icon {
-    @apply fill-gray-500 group-hover:fill-[#f7ab0a]/40;
+    @apply fill-[#023047] group-hover:fill-[#FB8500] hover:fill-[#FB8500];
   }
 }

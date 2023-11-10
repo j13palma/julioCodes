@@ -13,7 +13,7 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
       className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pb-4 pt-10 text-left"
     >
       <SectionTitle title="Experience" />
-      <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
+      <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
         {experiences.map((experience) => (
           <ExperienceCard key={experience._id} experience={experience} />
         ))}

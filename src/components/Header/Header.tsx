@@ -43,7 +43,7 @@ function Header({ socials }: HeaderProps) {
           href="#contact"
         />
         <Link href="#contact">
-          <p className="hidden text-sm uppercase text-gray-400 group-hover:text-[#f7ab0a]/40 md:inline-flex">
+          <p className="hidden text-sm uppercase text-[#023047] delay-75 group-hover:text-[#FB8500] md:inline-flex">
             Let&apos;s connect
           </p>
         </Link>

@@ -15,9 +15,9 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
       year: "numeric",
     });
   return (
-    <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden rounded-lg bg-[#292929] p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white hover:opacity-100 md:w-[600px] xl:max-w-[900px]">
+    <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden rounded-lg bg-[#B9C7DA] p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white hover:opacity-100 md:w-[600px] xl:max-w-[900px]">
       <div>
-        <div className="sticky top-0 z-10 max-w-[280px] bg-[#292929] px-5 pt-5 md:max-w-md lg:max-w-lg">
+        <div className="sticky top-0 z-10 max-w-[280px] bg-[#B9C7DA] px-5 pt-5 md:max-w-md lg:max-w-lg">
           <motion.div
             initial={{ y: -100, opacity: 0 }}
             transition={{ duration: 1.2 }}
@@ -36,7 +36,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
             <h4 className="text-2xl font-light">{experience.jobTitle}</h4>
             <p className="my-2 space-x-2 font-bold">{experience.company}</p>
             <SkillBar skills={experience.technologies} />
-            <p className="py-3 uppercase text-gray-500">
+            <p className="py-3 uppercase text-[#023047]">
               {formattedDate(experience.dateStarted)} -{" "}
               {experience.isCurrentlyWorkingHere
                 ? "Present"

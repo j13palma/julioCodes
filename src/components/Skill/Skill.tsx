@@ -15,7 +15,7 @@ interface SkillBarProps {
 
 export const SkillBar = ({ skills }: SkillBarProps) => {
   return (
-    <div className="flex gap-2 overflow-x-auto px-1 scrollbar-thin scrollbar-track-gray-400/40 scrollbar-thumb-white">
+    <div className="flex gap-2 overflow-x-auto px-1 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
       {skills.map((skill) => (
         <div
           key={skill._id}
@@ -37,10 +37,10 @@ export default function Skill({ direction, skill }: SkillProps) {
   return (
     <div className="group relative flex cursor-pointer">
       <motion.div
-        initial={{ x: direction === "Left" ? -100 : 100, opacity: 0 }}
+        initial={{ x: direction === "Left" ? -50 : 50, opacity: 0 }}
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
-        className="min-h-12 min-w-12 relative h-12 w-12  overflow-hidden rounded-full border border-gray-500 bg-slate-300 filter transition duration-300 ease-in-out  group-hover:grayscale md:h-28 md:w-28 xl:h-32 xl:w-32"
+        className="min-h-12 min-w-12 relative h-12 w-12  overflow-hidden rounded-full border border-[#023047] bg-slate-300 filter transition duration-300 ease-in-out  group-hover:grayscale md:h-28 md:w-28 xl:h-32 xl:w-32"
       >
         <Image
           src={urlForImage(skill.img).url()}

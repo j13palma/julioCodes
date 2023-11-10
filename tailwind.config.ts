@@ -10,6 +10,7 @@ const config: Config = {
     extend: {
       animation: {
         "spin-slow": "spin 4s linear infinite",
+        "ping-slow": "ping 4s cubic-bezier(0, 0, 0.2, 1) infinite",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

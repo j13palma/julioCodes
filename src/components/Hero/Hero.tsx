@@ -27,13 +27,12 @@ export default function Hero({ pageInfo }: HeroProps) {
         className="relative mx-auto mt-0 rounded-full"
       />
 
-      <h2 className="z-20 pb-2 text-sm uppercase tracking-[15px] text-gray-500">
+      <h2 className="z-20 pb-2 text-sm uppercase tracking-[15px] text-[#023047]">
         {pageInfo.role}
       </h2>
       <h1 className="h-32 px-9 text-4xl font-semibold lg:text-5xl">
         <span>{text}</span>
-        {/* <span>#WrenchGang</span> */}
-        <Cursor cursorColor="#F7AB0A" />
+        <Cursor cursorColor="#FB8500" />
       </h1>
       <div className="bottom-3 z-20 mx-auto flex flex-col gap-1 px-1 md:flex-row md:pt-5">
         <Link href="#about">
