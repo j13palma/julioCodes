@@ -40,17 +40,20 @@ export default function Skill({ direction, skill }: SkillProps) {
         initial={{ x: direction === "Left" ? -50 : 50, opacity: 0 }}
         transition={{ duration: 1.2 }}
         whileInView={{ opacity: 1, x: 0 }}
-        className="min-h-12 min-w-12 relative h-12 w-12  overflow-hidden rounded-full border border-[#023047] bg-slate-300 filter transition duration-300 ease-in-out  group-hover:grayscale md:h-28 md:w-28 xl:h-32 xl:w-32"
+        className="min-h-14 min-w-14 relative h-14 w-14 overflow-hidden rounded-full border border-[#023047] bg-slate-300 filter transition duration-300 ease-in-out  group-hover:grayscale md:h-28 md:w-28 xl:h-32 xl:w-32"
       >
         <Image
           src={urlForImage(skill.img).url()}
           alt={skill.title}
           fill
+          placeholder="blur"
+          loading="eager"
+          blurDataURL="/placerholder.png"
           className="object-cover"
         />
-        <div className="absolute h-12  w-12 rounded-full opacity-0 transition duration-300 ease-in-out group-hover:bg-white group-hover:opacity-80 md:h-28 md:w-28 xl:h-32 xl:w-32">
+        <div className="absolute h-14  w-14 rounded-full opacity-0 transition duration-300 ease-in-out group-hover:bg-white group-hover:opacity-80 md:h-28 md:w-28 xl:h-32 xl:w-32">
           <div className="flex h-full items-center justify-center">
-            <p className="font-bold text-black opacity-100 md:text-2xl">
+            <p className="text-xs font-bold text-black opacity-100 md:text-2xl">
               {skill.title}
             </p>
           </div>

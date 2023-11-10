@@ -10,7 +10,7 @@ export default function WorkExperience({ experiences }: WorkExperienceProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pb-4 pt-10 text-left"
+      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pb-12 pt-10 text-left"
     >
       <SectionTitle title="Experience" />
       <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">

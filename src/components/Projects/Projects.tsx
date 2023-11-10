@@ -13,7 +13,7 @@ export default function Projects({ projects }: ProjectsProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pt-10 text-left"
+      className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-start overflow-hidden px-10 pb-12 pt-10 text-left"
     >
       <SectionTitle title="Projects" />
       <div className="flex h-full w-full snap-x snap-mandatory space-x-8 overflow-x-auto py-5 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
@@ -37,7 +37,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   className="object-cover"
                 />
               </motion.div>
-              <div className="max-w-[280px] space-y-5 px-5 md:max-w-md md:px-10 lg:max-w-lg">
+              <div className="max-w-[280px] space-y-5 px-0 md:max-w-md md:px-10 lg:max-w-lg">
                 <h4 className="text-center text-4xl font-semibold">
                   <span className="underline decoration-[#FB8500]/50">
                     Case Study {i + 1} of {projects.length}:
@@ -46,7 +46,7 @@ export default function Projects({ projects }: ProjectsProps) {
                 </h4>
                 <SkillBar skills={project.technologies} />
 
-                <p className="text-center text-lg md:text-left">
+                <p className="pb-5 text-center text-lg md:text-left">
                   {project.summary}
                 </p>
               </div>

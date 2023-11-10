@@ -46,7 +46,7 @@ export default async function Home() {
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
       <Header socials={socials} />
-      <main>
+      <main className="safari_only">
         <section id="hero" className="snap-start">
           <Hero pageInfo={pageInformation} />
         </section>
@@ -62,7 +62,7 @@ export default async function Home() {
         <section id="projects" className="snap-center">
           <Projects projects={projects} />
         </section>
-        <section id="contact" className="snap-center">
+        <section id="contact" className="snap-start scroll-smooth">
           <Contact pageInfo={pageInformation} />
         </section>
       </main>

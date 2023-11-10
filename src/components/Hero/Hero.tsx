@@ -27,7 +27,7 @@ export default function Hero({ pageInfo }: HeroProps) {
         className="relative mx-auto mt-0 rounded-full"
       />
 
-      <h2 className="z-20 pb-2 text-sm uppercase tracking-[15px] text-[#023047]">
+      <h2 className="z-20 mr-[-20px] pb-2 text-sm uppercase tracking-[15px] text-[#023047]">
         {pageInfo.role}
       </h2>
       <h1 className="h-32 px-9 text-4xl font-semibold lg:text-5xl">
