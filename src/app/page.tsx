@@ -66,15 +66,15 @@ export default async function Home() {
           <Contact pageInfo={pageInformation} />
         </section>
       </main>
-      <footer className="sticky bottom-3 mx-auto flex w-full max-w-7xl cursor-pointer items-center justify-end pr-3">
+      <footer className="sticky bottom-3 mx-auto flex h-10 w-full max-w-7xl cursor-pointer items-center justify-end pr-3">
         <Link
           href="#hero"
           className="group flex flex-col items-center justify-center"
         >
-          <div className=" h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
-            <ChevronUpIcon className="fill-[#023047]" />
+          <div className="h-6 w-6 animate-bounce rounded-full grayscale filter hover:grayscale-0">
+            <ChevronUpIcon className="fill-[#023047] group-hover:opacity-70" />
           </div>
-          <p className="text-xs text-[#023047] opacity-0 group-hover:opacity-0 md:opacity-100">
+          <p className="text-xs text-[#023047] opacity-0 group-hover:opacity-70 md:opacity-100">
             To the Top!
           </p>
         </Link>
