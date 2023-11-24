@@ -14,7 +14,7 @@ const assistant_id = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID || "";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export type ChatBotProps = {};
-function ChatBot({}: ChatBotProps) {
+function ChatBot() {
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState<{ type: string; message: string }[]>(
     [],
@@ -34,11 +34,11 @@ function ChatBot({}: ChatBotProps) {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+
     setChatLog((prevChatLog) => [
       ...prevChatLog,
       { type: "user", message: inputValue },
     ]);
-    console.log(thread);
 
     sendMessage(inputValue);
     setInputValue("");
@@ -70,7 +70,6 @@ function ChatBot({}: ChatBotProps) {
         (message) => message.run_id === run.id && message.role === "assistant",
       )
       .pop();
-    console.log(lastMessageForRun?.content[0].text.value);
 
     setChatLog((prevChatLog) => [
       ...prevChatLog,
