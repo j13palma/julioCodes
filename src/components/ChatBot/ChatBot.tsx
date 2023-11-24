@@ -1,27 +1,44 @@
 "use client";
 
-import OpenAI from "openai";
-import { FormEvent, useState } from "react";
 import clsx from "clsx";
+import OpenAI from "openai";
+import { FormEvent, useEffect, useState } from "react";
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || "",
   dangerouslyAllowBrowser: true,
 });
 
+const assistant_id = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID || "";
+
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export type ChatBotProps = {};
 function ChatBot({}: ChatBotProps) {
   const [inputValue, setInputValue] = useState("");
-  const [chatLog, setChatLog] = useState([{ type: "", message: "" }]);
+  const [chatLog, setChatLog] = useState<{ type: string; message: string }[]>(
+    [],
+  );
   const [isLoading, setIsLoading] = useState(false);
+  const [thread, setThread] = useState<OpenAI.Beta.Threads.Thread>();
 
-  const handleSubmit = (event: FormEvent) => {
+  useEffect(() => {
+    async function fetchData() {
+      if (!thread) {
+        const newThread = await openai.beta.threads.create();
+        setThread(newThread);
+      }
+    }
+    fetchData();
+  }, [thread]);
+
+  const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
-
     setChatLog((prevChatLog) => [
       ...prevChatLog,
       { type: "user", message: inputValue },
     ]);
+    console.log(thread);
 
     sendMessage(inputValue);
     setInputValue("");
@@ -29,14 +46,35 @@ function ChatBot({}: ChatBotProps) {
 
   async function sendMessage(message: string) {
     setIsLoading(true);
-    const completion = await openai.chat.completions.create({
-      messages: [{ role: "user", content: message }],
-      model: "gpt-3.5-turbo",
+
+    await openai.beta.threads.messages.create(thread!.id, {
+      role: "user",
+      content: message,
     });
+
+    const run = await openai.beta.threads.runs.create(thread!.id, {
+      assistant_id,
+    });
+
+    let runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
+
+    while (runStatus.status !== "completed") {
+      await sleep(2000);
+      runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
+    }
+
+    const messages = await openai.beta.threads.messages.list(thread!.id);
+
+    const lastMessageForRun = messages.data
+      .filter(
+        (message) => message.run_id === run.id && message.role === "assistant",
+      )
+      .pop();
+    console.log(lastMessageForRun?.content[0].text.value);
 
     setChatLog((prevChatLog) => [
       ...prevChatLog,
-      { type: "bot", message: completion.choices[0].message.content || "" },
+      { type: "bot", message: lastMessageForRun?.content[0].text.value },
     ]);
     setIsLoading(false);
   }
