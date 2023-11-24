@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import OpenAI from "openai";
 import { FormEvent, useEffect, useState } from "react";
+import Markdown from "react-markdown";
 
 const openai = new OpenAI({
   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || "",
@@ -112,7 +113,7 @@ function ChatBot() {
                       message.type === "bot",
                   })}
                 >
-                  {message.message}
+                  <Markdown>{message.message}</Markdown>
                 </div>
               </div>
             ))}
