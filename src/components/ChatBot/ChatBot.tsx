@@ -74,7 +74,14 @@ function ChatBot() {
 
     setChatLog((prevChatLog) => [
       ...prevChatLog,
-      { type: "bot", message: lastMessageForRun?.content[0].text.value },
+
+      {
+        type: "bot",
+        message:
+          lastMessageForRun?.content[0].type === "text"
+            ? lastMessageForRun?.content[0].text.value
+            : "Message cannot be found",
+      },
     ]);
     setIsLoading(false);
   }
