@@ -97,12 +97,12 @@ function ChatBot() {
   };
 
   return (
-    <div className="container mx-auto max-w-[700px]">
+    <div className="container mx-auto h-full max-w-[700px] rounded-lg">
       <div className="flex h-full flex-col bg-gray-900">
-        <h1 className="bg-gradient-to-b from-blue-500 to-purple-500 bg-clip-text py-3 text-center text-6xl font-bold text-transparent">
+        <h1 className="bg-gradient-to-b from-[#FB8500] to-purple-500 bg-clip-text py-3 text-center text-5xl font-bold text-transparent">
           Chat
         </h1>
-        <div className="flex-grow p-6">
+        <div className="flex-grow overflow-y-auto p-6">
           <div className="flex flex-col space-y-4">
             {chatLog.map((message, index) => (
               <div
@@ -114,9 +114,9 @@ function ChatBot() {
               >
                 <div
                   className={clsx("max-w-sm rounded-lg p-4 text-white", {
-                    "bg-gradient-to-l from-blue-500 to-purple-500":
+                    "bg-gradient-to-l from-[#FB8500] to-purple-500":
                       message.type === "user",
-                    "bg-gradient-to-r from-blue-500 to-purple-500":
+                    "bg-gradient-to-r from-[#FB8500] to-purple-500":
                       message.type === "bot",
                   })}
                 >
@@ -126,7 +126,7 @@ function ChatBot() {
             ))}
             {isLoading && (
               <div className="flex justify-start">
-                <div className=" max-w-sm rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 p-4 text-white">
+                <div className=" max-w-sm rounded-lg bg-gradient-to-r from-[#FB8500] to-purple-500 p-4 text-white">
                   <TypingAnimation />
                 </div>
               </div>
@@ -144,7 +144,7 @@ function ChatBot() {
             />
             <button
               type="submit"
-              className="rounded-lg bg-gradient-to-tl from-blue-500 to-purple-500 px-4 py-2 font-semibold text-white transition-colors duration-300 hover:bg-gradient-to-tl hover:from-blue-600 hover:to-purple-600"
+              className="rounded-lg bg-gradient-to-tl from-[#FB8500] to-purple-500 px-4 py-2 font-semibold text-white transition-colors duration-300 hover:bg-gradient-to-tl hover:from-[#FB8500] hover:to-purple-600"
             >
               Send
             </button>
