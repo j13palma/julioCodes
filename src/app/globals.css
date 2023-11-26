@@ -17,3 +17,8 @@ body {
     @apply fill-[#023047] group-hover:fill-[#FB8500] hover:fill-[#FB8500];
   }
 }
+
+.trans-x-center {
+  left: 50%;
+  transform: translateX(-50%);
+}

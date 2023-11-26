@@ -47,7 +47,7 @@ export default async function Home() {
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
       <Header socials={socials} />
-      <main className="safari_only">
+      <main>
         <section id="hero" className="snap-start">
           <Hero pageInfo={pageInformation} />
         </section>
