@@ -63,9 +63,10 @@ export default async function Home() {
         <section id="projects" className="snap-center">
           <Projects projects={projects} />
         </section>
-        <section id="contact" className="snap-start scroll-smooth">
+        <section id="contact" className="snap-center">
           <Contact pageInfo={pageInformation} />
         </section>
+        <div className="h-10 w-10 snap-center" />
       </main>
       <ChatButton />
     </div>

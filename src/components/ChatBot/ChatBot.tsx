@@ -1,5 +1,6 @@
 "use client";
 
+import { LifebuoyIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import OpenAI from "openai";
 import { FormEvent, useEffect, useState } from "react";
@@ -21,13 +22,25 @@ function ChatBot() {
     [],
   );
   const [isLoading, setIsLoading] = useState(false);
-  const [thread, setThread] = useState<OpenAI.Beta.Threads.Thread>();
+  const [thread, setThread] = useState<{
+    id: OpenAI.Beta.Threads.Thread["id"];
+    instruction: string;
+  }>();
 
   useEffect(() => {
     async function fetchData() {
       if (!thread) {
         const newThread = await openai.beta.threads.create();
-        setThread(newThread);
+        let instruction = "";
+        await fetch("/api/datascraper", { method: "GET" })
+          .then(async (res) => {
+            const data = await res.json();
+            return (instruction = JSON.stringify(data));
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        setThread({ id: newThread.id, instruction });
       }
     }
     fetchData();
@@ -46,6 +59,7 @@ function ChatBot() {
   };
 
   async function sendMessage(message: string) {
+    const element = document.body.querySelector("div.overflow-y-auto");
     setIsLoading(true);
 
     await openai.beta.threads.messages.create(thread!.id, {
@@ -55,6 +69,9 @@ function ChatBot() {
 
     const run = await openai.beta.threads.runs.create(thread!.id, {
       assistant_id,
+      instructions: `${
+        (await openai.beta.assistants.retrieve(assistant_id)).instructions
+      } additional information about julio: ${thread?.instruction}`,
     });
 
     let runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
@@ -84,20 +101,15 @@ function ChatBot() {
       },
     ]);
     setIsLoading(false);
+    element?.scrollTo({
+      top: 1000,
+      left: 0,
+      behavior: "smooth",
+    });
   }
 
-  const TypingAnimation = () => {
-    return (
-      <div className="flex items-center space-x-2">
-        <div className="h-4 w-4 animate-pulse rounded-full bg-gradient-radial from-slate-200 to-slate-600" />
-        <div className="h-4 w-4 animate-pulse rounded-full bg-gradient-radial from-slate-200 to-slate-600" />
-        <div className="h-4 w-4 animate-pulse rounded-full bg-gradient-radial from-slate-200 to-slate-600" />
-      </div>
-    );
-  };
-
   return (
-    <div className="container mx-auto h-full max-w-[700px] rounded-lg">
+    <div className="container mx-auto h-full w-full max-w-[700px] rounded-lg">
       <div className="flex h-full flex-col bg-gray-900">
         <h1 className="bg-gradient-to-b from-[#FB8500] to-purple-500 bg-clip-text py-3 text-center text-5xl font-bold text-transparent">
           Chat
@@ -114,9 +126,9 @@ function ChatBot() {
               >
                 <div
                   className={clsx("max-w-sm rounded-lg p-4 text-white", {
-                    "bg-gradient-to-l from-[#FB8500] to-purple-500":
+                    "ml-5 bg-gradient-to-l from-[#FB8500] to-purple-500":
                       message.type === "user",
-                    "bg-gradient-to-r from-[#FB8500] to-purple-500":
+                    "mr-5 bg-gradient-to-r from-[#FB8500] to-purple-500":
                       message.type === "bot",
                   })}
                 >
@@ -127,20 +139,20 @@ function ChatBot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className=" max-w-sm rounded-lg bg-gradient-to-r from-[#FB8500] to-purple-500 p-4 text-white">
-                  <TypingAnimation />
+                  <LifebuoyIcon className="h-5 w-5 animate-spin-slow" />
                 </div>
               </div>
             )}
           </div>
         </div>
         <form onSubmit={handleSubmit} className="flex-none p-6">
-          <div className="flex rounded-lg border border-gray-500 bg-slate-400">
+          <div className="flex rounded-lg bg-slate-300">
             <input
               type="text"
-              placeholder="Type your message..."
+              placeholder="Ask About Julio..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="flex-grow bg-transparent px-4 py-2 text-white focus:outline-none"
+              className="w-[212px] flex-grow bg-transparent px-4 py-2 text-white placeholder:text-black focus:outline-none"
             />
             <button
               type="submit"

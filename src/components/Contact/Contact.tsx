@@ -39,7 +39,7 @@ export default function Contact({ pageInfo }: ContactProps) {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <motion.div
+    <motion.article
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
@@ -128,7 +128,6 @@ export default function Contact({ pageInfo }: ContactProps) {
           </button>
         </form>
       </div>
-      <div className="h-5 snap-center scroll-smooth" />
-    </motion.div>
+    </motion.article>
   );
 }
