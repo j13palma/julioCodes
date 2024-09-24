@@ -1,28 +1,19 @@
-"use client";
+'use client';
 import {
   AtSymbolIcon as EmailIcon,
   DevicePhoneMobileIcon as PhoneIcon,
   EllipsisHorizontalCircleIcon as LoadingIcon,
   MapIcon,
   PaperAirplaneIcon as PaperPlaneIcon,
-  XCircleIcon as StopIcon,
-} from "@heroicons/react/24/outline";
-import { useFormspark } from "@formspark/use-formspark";
-import { motion } from "framer-motion";
-import { useState } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+} from '@heroicons/react/24/outline';
+import { useFormspark } from '@formspark/use-formspark';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
 
-import { SectionTitle } from "..";
-import { PageInfo } from "../../../typings";
+import { SectionTitle } from '..';
+import { PageInfo } from '../../../typings';
 
-const FORMSPARK_FORM_ID = "PEUv9sGu";
-
-type Inputs = {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-};
+const FORMSPARK_FORM_ID = 'PEUv9sGu';
 
 export type ContactProps = { pageInfo: PageInfo };
 
@@ -30,13 +21,18 @@ export default function Contact({ pageInfo }: ContactProps) {
   const [submit, submitting] = useFormspark({
     formId: FORMSPARK_FORM_ID,
   });
-  const { register, handleSubmit } = useForm<Inputs>();
-  const onSubmit: SubmitHandler<Inputs> = async (formData) => {
-    await submit(formData);
-    setSubmitted(true);
-    alert("Form submitted");
-  };
   const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = async (formData: FormData) => {
+    await submit({
+      name: formData.get('name'),
+      email: formData.get('email'),
+      subject: formData.get('subject'),
+      message: formData.get('message'),
+    });
+    setSubmitted(true);
+    alert('Form submitted');
+  };
 
   return (
     <motion.article
@@ -47,11 +43,11 @@ export default function Contact({ pageInfo }: ContactProps) {
     >
       <SectionTitle title="Contact Me" />
       <div className="mt-5 flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
-        <h4 className="text-center text-4xl font-semibold">
+        <h4 className="mb-5 text-center text-4xl font-semibold">
+          Let&apos;s talk,{' '}
           <span className="underline decoration-[#FB8500]/50">
-            Let&apos;s talk
-          </span>{" "}
-          about your business needs and how I can help satisfy them.
+            Let&apos;s connect
+          </span>
         </h4>
         <div className="space-y-10">
           <div className="flex items-center justify-center space-x-2">
@@ -68,46 +64,42 @@ export default function Contact({ pageInfo }: ContactProps) {
           </div>
         </div>
         <form
-          onSubmit={handleSubmit(onSubmit)}
+          action={handleSubmit}
           className="mx-auto flex w-full flex-col space-y-3"
         >
           <div className="flex flex-col gap-3 md:flex-row">
             <input
-              {...register("name")}
               className="contact-input w-full"
+              name="name"
               placeholder="Name"
               type="text"
               required
-              onChange={() => setSubmitted(false)}
             />
             <input
-              {...register("email")}
               className="contact-input w-full"
+              name="email"
               placeholder="Email"
               type="email"
               required
-              onChange={() => setSubmitted(false)}
             />
           </div>
           <input
-            {...register("subject")}
             className="contact-input"
+            name="subject"
             placeholder="Subject"
             type="text"
             required
-            onChange={() => setSubmitted(false)}
           />
           <textarea
-            {...register("message")}
             className="contact-input"
+            name="message"
             placeholder="Message"
             cols={30}
             rows={5}
             required
-            onChange={() => setSubmitted(false)}
           />
           <button
-            className="rounded-md bg-[#FB8500]/40 px-10 py-5 text-lg font-bold transition-all enabled:hover:bg-[#FB8500]"
+            className="rounded-md border-4 border-[#FB8500] px-10 py-5 text-lg font-bold transition-all enabled:hover:bg-[#FB8500]"
             disabled={submitting || submitted}
             type="submit"
           >

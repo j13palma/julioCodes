@@ -1,29 +1,29 @@
-"use client";
+'use client';
 
-import { LifebuoyIcon } from "@heroicons/react/24/outline";
-import clsx from "clsx";
-import OpenAI from "openai";
-import { FormEvent, useEffect, useState } from "react";
-import Markdown from "react-markdown";
+import { LifebuoyIcon } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
+import OpenAI from 'openai';
+import { FormEvent, useEffect, useState } from 'react';
+import Markdown from 'react-markdown';
 
 const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || "",
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
   dangerouslyAllowBrowser: true,
 });
 
-const assistant_id = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID || "";
+const assistant_id = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID || '';
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export type ChatBotProps = {};
 function ChatBot() {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
   const [chatLog, setChatLog] = useState<{ type: string; message: string }[]>(
-    [],
+    []
   );
   const [isLoading, setIsLoading] = useState(false);
   const [thread, setThread] = useState<{
-    id: OpenAI.Beta.Threads.Thread["id"];
+    id: OpenAI.Beta.Threads.Thread['id'];
     instruction: string;
   }>();
 
@@ -31,8 +31,8 @@ function ChatBot() {
     async function fetchData() {
       if (!thread) {
         const newThread = await openai.beta.threads.create();
-        let instruction = "";
-        await fetch("/api/datascraper", { method: "GET" })
+        let instruction = '';
+        await fetch('/api/datascraper', { method: 'GET' })
           .then(async (res) => {
             const data = await res.json();
             return (instruction = JSON.stringify(data));
@@ -51,19 +51,19 @@ function ChatBot() {
 
     setChatLog((prevChatLog) => [
       ...prevChatLog,
-      { type: "user", message: inputValue },
+      { type: 'user', message: inputValue },
     ]);
 
     sendMessage(inputValue);
-    setInputValue("");
+    setInputValue('');
   };
 
   async function sendMessage(message: string) {
-    const element = document.body.querySelector("div.overflow-y-auto");
+    const element = document.body.querySelector('div.overflow-y-auto');
     setIsLoading(true);
 
     await openai.beta.threads.messages.create(thread!.id, {
-      role: "user",
+      role: 'user',
       content: message,
     });
 
@@ -76,7 +76,7 @@ function ChatBot() {
 
     let runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
 
-    while (runStatus.status !== "completed") {
+    while (runStatus.status !== 'completed') {
       await sleep(2000);
       runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
     }
@@ -85,7 +85,7 @@ function ChatBot() {
 
     const lastMessageForRun = messages.data
       .filter(
-        (message) => message.run_id === run.id && message.role === "assistant",
+        (message) => message.run_id === run.id && message.role === 'assistant'
       )
       .pop();
 
@@ -93,24 +93,24 @@ function ChatBot() {
       ...prevChatLog,
 
       {
-        type: "bot",
+        type: 'bot',
         message:
-          lastMessageForRun?.content[0].type === "text"
+          lastMessageForRun?.content[0].type === 'text'
             ? lastMessageForRun?.content[0].text.value
-            : "Message cannot be found",
+            : 'Message cannot be found',
       },
     ]);
     setIsLoading(false);
     element?.scrollTo({
       top: 1000,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 
   return (
     <div className="container mx-auto h-full w-full max-w-[700px] rounded-lg">
-      <div className="flex h-full flex-col bg-gray-900">
+      <div className="flex h-full flex-col bg-slate-700">
         <h1 className="bg-gradient-to-b from-[#FB8500] to-purple-500 bg-clip-text py-3 text-center text-5xl font-bold text-transparent">
           Chat
         </h1>
@@ -119,17 +119,17 @@ function ChatBot() {
             {chatLog.map((message, index) => (
               <div
                 key={index}
-                className={clsx("flex", {
-                  "justify-end": message.type === "user",
-                  "justify-start": message.type === "bot",
+                className={clsx('flex', {
+                  'justify-end': message.type === 'user',
+                  'justify-start': message.type === 'bot',
                 })}
               >
                 <div
-                  className={clsx("max-w-sm rounded-lg p-4 text-white", {
-                    "ml-5 bg-gradient-to-l from-[#FB8500] to-purple-500":
-                      message.type === "user",
-                    "mr-5 bg-gradient-to-r from-[#FB8500] to-purple-500":
-                      message.type === "bot",
+                  className={clsx('max-w-sm rounded-lg p-4 text-white', {
+                    'ml-5 bg-gradient-to-l from-[#FB8500] to-purple-500':
+                      message.type === 'user',
+                    'mr-5 bg-gradient-to-r from-[#FB8500] to-purple-500':
+                      message.type === 'bot',
                   })}
                 >
                   <Markdown>{message.message}</Markdown>
@@ -139,20 +139,74 @@ function ChatBot() {
             {isLoading && (
               <div className="flex justify-start">
                 <div className=" max-w-sm rounded-lg bg-gradient-to-r from-[#FB8500] to-purple-500 p-4 text-white">
-                  <LifebuoyIcon className="h-5 w-5 animate-spin-slow" />
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="fill-white"
+                  >
+                    <circle
+                      cx="4"
+                      cy="12"
+                      r="3"
+                    >
+                      <animate
+                        id="spinner_qFRN"
+                        begin="0;spinner_OcgL.end+0.25s"
+                        attributeName="cy"
+                        calcMode="spline"
+                        dur="0.6s"
+                        values="12;6;12"
+                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                      />
+                    </circle>
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="3"
+                    >
+                      <animate
+                        begin="spinner_qFRN.begin+0.1s"
+                        attributeName="cy"
+                        calcMode="spline"
+                        dur="0.6s"
+                        values="12;6;12"
+                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                      />
+                    </circle>
+                    <circle
+                      cx="20"
+                      cy="12"
+                      r="3"
+                    >
+                      <animate
+                        id="spinner_OcgL"
+                        begin="spinner_qFRN.begin+0.2s"
+                        attributeName="cy"
+                        calcMode="spline"
+                        dur="0.6s"
+                        values="12;6;12"
+                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
+                      />
+                    </circle>
+                  </svg>
                 </div>
               </div>
             )}
           </div>
         </div>
-        <form onSubmit={handleSubmit} className="flex-none p-6">
+        <form
+          onSubmit={handleSubmit}
+          className="flex-none p-6"
+        >
           <div className="flex rounded-lg bg-slate-300">
             <input
               type="text"
               placeholder="Ask About Julio..."
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              className="w-[212px] flex-grow bg-transparent px-4 py-2 text-white placeholder:text-black focus:outline-none"
+              className="w-[212px] flex-grow bg-transparent px-4 py-2 placeholder:text-white focus:outline-none"
             />
             <button
               type="submit"
