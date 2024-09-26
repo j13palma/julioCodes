@@ -66,7 +66,6 @@ export default async function Home() {
         <section id="contact" className="snap-center">
           <Contact pageInfo={pageInformation} />
         </section>
-        <div className="h-10 w-10 snap-center" />
       </main>
       <ChatButton />
     </div>

@@ -1,112 +1,114 @@
-'use client';
+"use client";
 
-import { LifebuoyIcon } from '@heroicons/react/24/outline';
-import clsx from 'clsx';
-import OpenAI from 'openai';
-import { FormEvent, useEffect, useState } from 'react';
-import Markdown from 'react-markdown';
+import { SendMessage } from "@/middleware/InitChat";
+import clsx from "clsx";
+import {
+  createRef,
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import Markdown from "react-markdown";
 
-const openai = new OpenAI({
-  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY || '',
-  dangerouslyAllowBrowser: true,
-});
-
-const assistant_id = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID || '';
-
-const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-export type ChatBotProps = {};
-function ChatBot() {
-  const [inputValue, setInputValue] = useState('');
-  const [chatLog, setChatLog] = useState<{ type: string; message: string }[]>(
-    []
+const SpeechBubbles = () => {
+  return (
+    <div className="flex justify-start">
+      <div className="max-w-sm rounded-lg bg-gradient-to-r from-[#FB8500] to-purple-500 p-3 text-white">
+        <svg
+          width="32"
+          height="32"
+          viewBox="0 0 28 24"
+          xmlns="http://www.w3.org/2000/svg"
+          className="fill-white"
+        >
+          <circle cx="4" cy="14" r="4">
+            <animate
+              id="spinner_qFRN"
+              begin="0;spinner_OcgL.end+0.25s"
+              attributeName="cy"
+              calcMode="spline"
+              dur="0.6s"
+              values="12;6;12"
+              keySplines=".33,.66,.66,1;.33,0,.66,.33"
+            />
+          </circle>
+          <circle cx="14" cy="14" r="4">
+            <animate
+              begin="spinner_qFRN.begin+0.1s"
+              attributeName="cy"
+              calcMode="spline"
+              dur="0.6s"
+              values="12;6;12"
+              keySplines=".33,.66,.66,1;.33,0,.66,.33"
+            />
+          </circle>
+          <circle cx="24" cy="14" r="4">
+            <animate
+              id="spinner_OcgL"
+              begin="spinner_qFRN.begin+0.2s"
+              attributeName="cy"
+              calcMode="spline"
+              dur="0.6s"
+              values="12;6;12"
+              keySplines=".33,.66,.66,1;.33,0,.66,.33"
+            />
+          </circle>
+        </svg>
+      </div>
+    </div>
   );
+};
+
+interface ChatBotProps {
+  chatLog: { type: string; message: string }[];
+  setChatLog: Dispatch<SetStateAction<{ type: string; message: string }[]>>;
+  threadId: string;
+}
+
+export default function ChatBot({
+  chatLog,
+  setChatLog,
+  threadId,
+}: ChatBotProps) {
+  const [inputValue, setInputValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [thread, setThread] = useState<{
-    id: OpenAI.Beta.Threads.Thread['id'];
-    instruction: string;
-  }>();
+
+  const messagesEndRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    async function fetchData() {
-      if (!thread) {
-        const newThread = await openai.beta.threads.create();
-        let instruction = '';
-        await fetch('/api/datascraper', { method: 'GET' })
-          .then(async (res) => {
-            const data = await res.json();
-            return (instruction = JSON.stringify(data));
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-        setThread({ id: newThread.id, instruction });
-      }
-    }
-    fetchData();
-  }, [thread]);
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isLoading]);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     setChatLog((prevChatLog) => [
       ...prevChatLog,
-      { type: 'user', message: inputValue },
+      { type: "user", message: inputValue },
     ]);
 
     sendMessage(inputValue);
-    setInputValue('');
+    setInputValue("");
   };
 
-  async function sendMessage(message: string) {
-    const element = document.body.querySelector('div.overflow-y-auto');
+  const sendMessage = async (message: string) => {
     setIsLoading(true);
 
-    await openai.beta.threads.messages.create(thread!.id, {
-      role: 'user',
-      content: message,
-    });
-
-    const run = await openai.beta.threads.runs.create(thread!.id, {
-      assistant_id,
-      instructions: `${
-        (await openai.beta.assistants.retrieve(assistant_id)).instructions
-      } additional information about julio: ${thread?.instruction}`,
-    });
-
-    let runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
-
-    while (runStatus.status !== 'completed') {
-      await sleep(2000);
-      runStatus = await openai.beta.threads.runs.retrieve(thread!.id, run.id);
-    }
-
-    const messages = await openai.beta.threads.messages.list(thread!.id);
-
-    const lastMessageForRun = messages.data
-      .filter(
-        (message) => message.run_id === run.id && message.role === 'assistant'
-      )
-      .pop();
-
+    const chatMessage = await SendMessage({ message, threadId: threadId });
     setChatLog((prevChatLog) => [
       ...prevChatLog,
 
       {
-        type: 'bot',
-        message:
-          lastMessageForRun?.content[0].type === 'text'
-            ? lastMessageForRun?.content[0].text.value
-            : 'Message cannot be found',
+        type: "bot",
+        message: chatMessage,
       },
     ]);
+
     setIsLoading(false);
-    element?.scrollTo({
-      top: 1000,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }
+  };
 
   return (
     <div className="container mx-auto h-full w-full max-w-[700px] rounded-lg">
@@ -119,87 +121,28 @@ function ChatBot() {
             {chatLog.map((message, index) => (
               <div
                 key={index}
-                className={clsx('flex', {
-                  'justify-end': message.type === 'user',
-                  'justify-start': message.type === 'bot',
+                className={clsx("flex", {
+                  "justify-end": message.type === "user",
+                  "justify-start": message.type === "bot",
                 })}
               >
                 <div
-                  className={clsx('max-w-sm rounded-lg p-4 text-white', {
-                    'ml-5 bg-gradient-to-l from-[#FB8500] to-purple-500':
-                      message.type === 'user',
-                    'mr-5 bg-gradient-to-r from-[#FB8500] to-purple-500':
-                      message.type === 'bot',
+                  className={clsx("max-w-sm rounded-lg p-4 text-white", {
+                    "ml-5 bg-gradient-to-l from-[#FB8500] to-purple-500":
+                      message.type === "user",
+                    "mr-5 bg-gradient-to-r from-[#FB8500] to-purple-500":
+                      message.type === "bot",
                   })}
                 >
+                  <div ref={messagesEndRef} />
                   <Markdown>{message.message}</Markdown>
                 </div>
               </div>
             ))}
-            {isLoading && (
-              <div className="flex justify-start">
-                <div className=" max-w-sm rounded-lg bg-gradient-to-r from-[#FB8500] to-purple-500 p-4 text-white">
-                  <svg
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-white"
-                  >
-                    <circle
-                      cx="4"
-                      cy="12"
-                      r="3"
-                    >
-                      <animate
-                        id="spinner_qFRN"
-                        begin="0;spinner_OcgL.end+0.25s"
-                        attributeName="cy"
-                        calcMode="spline"
-                        dur="0.6s"
-                        values="12;6;12"
-                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
-                      />
-                    </circle>
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="3"
-                    >
-                      <animate
-                        begin="spinner_qFRN.begin+0.1s"
-                        attributeName="cy"
-                        calcMode="spline"
-                        dur="0.6s"
-                        values="12;6;12"
-                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
-                      />
-                    </circle>
-                    <circle
-                      cx="20"
-                      cy="12"
-                      r="3"
-                    >
-                      <animate
-                        id="spinner_OcgL"
-                        begin="spinner_qFRN.begin+0.2s"
-                        attributeName="cy"
-                        calcMode="spline"
-                        dur="0.6s"
-                        values="12;6;12"
-                        keySplines=".33,.66,.66,1;.33,0,.66,.33"
-                      />
-                    </circle>
-                  </svg>
-                </div>
-              </div>
-            )}
+            {isLoading && <SpeechBubbles />}
           </div>
         </div>
-        <form
-          onSubmit={handleSubmit}
-          className="flex-none p-6"
-        >
+        <form onSubmit={handleSubmit} className="flex-none p-6">
           <div className="flex rounded-lg bg-slate-300">
             <input
               type="text"
@@ -209,8 +152,9 @@ function ChatBot() {
               className="w-[212px] flex-grow bg-transparent px-4 py-2 placeholder:text-white focus:outline-none"
             />
             <button
-              type="submit"
               className="rounded-lg bg-gradient-to-tl from-[#FB8500] to-purple-500 px-4 py-2 font-semibold text-white transition-colors duration-300 hover:bg-gradient-to-tl hover:from-[#FB8500] hover:to-purple-600"
+              disabled={isLoading}
+              type="submit"
             >
               Send
             </button>
@@ -220,4 +164,3 @@ function ChatBot() {
     </div>
   );
 }
-export default ChatBot;
