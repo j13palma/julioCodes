@@ -10,7 +10,7 @@ export type HeaderProps = {
 
 function Header({ socials }: HeaderProps) {
   return (
-    <header className="sticky top-0 z-10 mx-auto flex max-w-7xl items-start justify-between md:px-5 xl:items-center">
+    <header className="trans-x-center fixed top-0 z-10 mx-auto flex w-full max-w-7xl justify-between md:px-5 xl:items-center">
       <motion.div
         initial={{ x: -500, opacity: 0, scale: 0.5 }}
         animate={{ x: 0, opacity: 1, scale: 1 }}

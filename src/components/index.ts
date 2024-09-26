@@ -1,4 +1,5 @@
 export * from "./About";
+export * from "./ChatBot";
 export * from "./Contact";
 export * from "./ExperienceCard";
 export * from "./Header";
