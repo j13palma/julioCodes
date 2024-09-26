@@ -1,6 +1,5 @@
 "use client";
 
-import { SendMessage } from "@/middleware/InitChat";
 import clsx from "clsx";
 import {
   createRef,
@@ -11,6 +10,7 @@ import {
   useState,
 } from "react";
 import Markdown from "react-markdown";
+import { SendMessage } from "@/middleware/OpenAI";
 
 const SpeechBubbles = () => {
   return (

@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChatBot } from ".";
-import { InitChat } from "@/middleware/InitChat";
+import { InitChat } from "@/middleware/OpenAI";
 
 export default function ChatButton() {
   const [isOpen, setIsOpen] = useState(false);

@@ -9,7 +9,7 @@ const openai = new OpenAI({
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const removeCitation = (text: string) => text.replace(/【\d+:\d+†.*?】/g, "");
+const removeCitation = (text: string) => text.replace(/【.*?】/g, "");
 
 export async function InitChat() {
   const newThread = await openai.beta.threads.create();
