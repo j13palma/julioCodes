@@ -1,4 +1,4 @@
-import ChatBot from './ChatBot';
-import ChatButton, { ChatButtonProps } from './ChatButton';
+import ChatBot from "./ChatBot";
+import ChatButton from "./ChatButton";
 
-export { ChatBot, ChatButton, type ChatButtonProps };
+export { ChatBot, ChatButton };
