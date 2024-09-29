@@ -12,7 +12,6 @@
   "dependencies": {
     "@formspark/use-formspark": "^0.1.39",
     "@heroicons/react": "^2.0.18",
-    "@react-three/fiber": "^8.17.8",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",
     "@types/three": "^0.169.0",
