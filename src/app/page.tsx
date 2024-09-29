@@ -1,25 +1,23 @@
-import Link from "next/link";
 import {
   About,
-  Hero,
-  Header,
-  WorkExperience,
-  Skills,
-  Projects,
-  Contact,
   ChatButton,
+  Contact,
+  Header,
+  Hero,
+  Projects,
+  Skills,
+  ThankYou,
+  WorkExperience,
 } from "@/components";
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
-import { client } from "../../sanity/lib/client";
+import { client } from "@root/sanity/lib/client";
 import {
   experience,
   pageInfo,
   project,
   skill,
   social,
-} from "../../sanity/queries";
-import { Experience, PageInfo, Project, Skill, Social } from "../../typings";
-import { Thankyou } from "@/components/ThreeJS";
+} from "@root/sanity/queries";
+import { Experience, PageInfo, Project, Skill, Social } from "@root/typings";
 
 export const revalidate = 60;
 
@@ -68,7 +66,7 @@ export default async function Home() {
           <Contact pageInfo={pageInformation} />
         </section>
         <section id="thankYou" className="snap-start">
-          <Thankyou />
+          <ThankYou />
         </section>
       </main>
       <ChatButton />

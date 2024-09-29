@@ -1,7 +1,5 @@
-"use client";
-import { motion } from "framer-motion";
-import { SectionTitle, Skill } from "..";
-import { Skill as SkillType } from "../../../typings";
+import { SectionTitle, Skill } from "@/components";
+import { Skill as SkillType } from "@root/typings";
 
 export type SkillsProps = { skills: SkillType[] };
 

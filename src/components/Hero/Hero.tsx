@@ -3,8 +3,8 @@ import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { PulsingCircles } from "..";
 import Image from "next/image";
 import Link from "next/link";
-import { PageInfo } from "../../../typings";
-import { urlForImage } from "../../../sanity/lib/image";
+import { PageInfo } from "@root/typings";
+import { urlForImage } from "@root/sanity/lib/image";
 
 export type HeroProps = {
   pageInfo: PageInfo;

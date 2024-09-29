@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader.js";
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry.js";
 
-export default function Thankyou() {
+export default function ThankYou() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

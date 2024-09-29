@@ -1,3 +1,3 @@
-import PulsingCircles, { PulsingCirclesProps } from './PulsingCircles';
+import PulsingCircles from "./PulsingCircles";
 
-export { PulsingCircles, type PulsingCirclesProps };
+export { PulsingCircles };

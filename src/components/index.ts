@@ -9,4 +9,5 @@ export * from "./PulsingCircles";
 export * from "./SectionTitle";
 export * from "./Skill";
 export * from "./Skills";
+export * from "./ThankYou";
 export * from "./WorkExperience";

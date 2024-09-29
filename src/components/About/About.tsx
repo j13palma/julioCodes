@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { SectionTitle } from "..";
-import { PageInfo } from "../../../typings";
-import { urlForImage } from "../../../sanity/lib/image";
+import { SectionTitle } from "@/components";
+import { PageInfo } from "@root/typings";
+import { urlForImage } from "@root/sanity/lib/image";
 
 export type AboutProps = { pageInfo: PageInfo };
 

@@ -1,19 +1,21 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Experience } from "../../../typings";
-import { urlForImage } from "../../../sanity/lib/image";
-import { SkillBar } from "..";
+import { Experience } from "@root/typings";
+import { urlForImage } from "@root/sanity/lib/image";
+import { SkillBar } from "@/components";
 
 export type ExperienceCardProps = {
   experience: Experience;
 };
+
 export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const formattedDate = (date: Date) =>
     new Date(date).toLocaleString("en-US", {
       month: "short",
       year: "numeric",
     });
+
   return (
     <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden rounded-lg bg-[#B9C7DA] p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white hover:opacity-100 md:w-[600px] xl:max-w-[900px]">
       <div>
