@@ -64,7 +64,13 @@ export default function Contact({ pageInfo }: ContactProps) {
           </div>
           <div className="group flex items-center justify-center space-x-2">
             <EmailIcon className="h-7 animate-spin-slow text-[#FB8500]" />
-            <p className="text-2xl">{pageInfo.email}</p>
+            <a
+              className="text-2xl"
+              href={`mailto:${pageInfo.email}`}
+              target="_blank"
+            >
+              {pageInfo.email}
+            </a>
           </div>
           <div className="flex items-center justify-center space-x-2">
             <MapIcon className="h-7 animate-pulse text-[#FB8500]" />
