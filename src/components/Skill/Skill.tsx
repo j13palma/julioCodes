@@ -1,16 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Skill } from "../../../typings";
-import { urlForImage } from "../../../sanity/lib/image";
+import { Skill as SkillType } from "@root/typings";
+import { urlForImage } from "@root/sanity/lib/image";
 
 export type SkillProps = {
   direction: "Left" | "Right";
-  skill: Skill;
+  skill: SkillType;
 };
 
 interface SkillBarProps {
-  skills: Skill[];
+  skills: SkillType[];
 }
 
 export const SkillBar = ({ skills }: SkillBarProps) => {

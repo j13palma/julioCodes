@@ -1,24 +1,23 @@
-import Link from "next/link";
 import {
   About,
-  Hero,
-  Header,
-  WorkExperience,
-  Skills,
-  Projects,
-  Contact,
   ChatButton,
+  Contact,
+  Header,
+  Hero,
+  Projects,
+  Skills,
+  ThankYou,
+  WorkExperience,
 } from "@/components";
-import { ChevronUpIcon } from "@heroicons/react/24/outline";
-import { client } from "../../sanity/lib/client";
+import { client } from "@root/sanity/lib/client";
 import {
   experience,
   pageInfo,
   project,
   skill,
   social,
-} from "../../sanity/queries";
-import { Experience, PageInfo, Project, Skill, Social } from "../../typings";
+} from "@root/sanity/queries";
+import { Experience, PageInfo, Project, Skill, Social } from "@root/typings";
 
 export const revalidate = 60;
 
@@ -51,20 +50,23 @@ export default async function Home() {
         <section id="hero" className="snap-start">
           <Hero pageInfo={pageInformation} />
         </section>
-        <section id="about" className="snap-center">
+        <section id="about" className="snap-start">
           <About pageInfo={pageInformation} />
         </section>
-        <section id="experience" className="snap-center">
+        <section id="experience" className="snap-start">
           <WorkExperience experiences={experiences} />
         </section>
-        <section id="skills" className="snap-center">
+        <section id="skills" className="snap-start">
           <Skills skills={skills} />
         </section>
-        <section id="projects" className="snap-center">
+        <section id="projects" className="snap-start">
           <Projects projects={projects} />
         </section>
-        <section id="contact" className="snap-center">
+        <section id="contact" className="snap-start">
           <Contact pageInfo={pageInformation} />
+        </section>
+        <section id="thankYou" className="snap-start">
+          <ThankYou />
         </section>
       </main>
       <ChatButton />

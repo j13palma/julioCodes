@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
-import { Social } from "../../../typings";
+import { Social } from "@root/typings";
 
 export type HeaderProps = {
   socials: Social[];

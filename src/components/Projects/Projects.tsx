@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import { SectionTitle, SkillBar } from "..";
 import Image from "next/image";
-import { Project } from "../../../typings";
-import { urlForImage } from "../../../sanity/lib/image";
+import { Project } from "@root/typings";
+import { urlForImage } from "@root/sanity/lib/image";
 
 export type ProjectsProps = { projects: Project[] };
 

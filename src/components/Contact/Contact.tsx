@@ -10,8 +10,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { useFormspark } from "@formspark/use-formspark";
 
-import { SectionTitle } from "..";
-import { PageInfo } from "../../../typings";
+import { SectionTitle } from "@/components";
+import { PageInfo } from "@root/typings";
 
 const FORMSPARK_FORM_ID = process.env.NEXT_PUBLIC_FORMSPARK_ID || "";
 
@@ -64,7 +64,13 @@ export default function Contact({ pageInfo }: ContactProps) {
           </div>
           <div className="group flex items-center justify-center space-x-2">
             <EmailIcon className="h-7 animate-spin-slow text-[#FB8500]" />
-            <p className="text-2xl">{pageInfo.email}</p>
+            <a
+              className="text-2xl"
+              href={`mailto:${pageInfo.email}`}
+              target="_blank"
+            >
+              {pageInfo.email}
+            </a>
           </div>
           <div className="flex items-center justify-center space-x-2">
             <MapIcon className="h-7 animate-pulse text-[#FB8500]" />

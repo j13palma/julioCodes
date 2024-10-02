@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import { ExperienceCard, SectionTitle } from "..";
-import { Experience } from "../../../typings";
+import { ExperienceCard, SectionTitle } from "@/components";
+import { Experience } from "@root/typings";
 
 export type WorkExperienceProps = { experiences: Experience[] };
 export default function WorkExperience({ experiences }: WorkExperienceProps) {
