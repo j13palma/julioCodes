@@ -1,8 +1,6 @@
 import {
   About,
-  ChatButton,
   Contact,
-  Header,
   Hero,
   Projects,
   Skills,
@@ -15,9 +13,8 @@ import {
   pageInfo,
   project,
   skill,
-  social,
 } from "@root/sanity/queries";
-import { Experience, PageInfo, Project, Skill, Social } from "@root/typings";
+import { Experience, PageInfo, Project, Skill } from "@root/typings";
 
 export const revalidate = 60;
 
@@ -26,7 +23,6 @@ async function getData() {
   const pageInformation: PageInfo = await client.fetch(pageInfo);
   const projects: Project[] = await client.fetch(project);
   const skills: Skill[] = await client.fetch(skill);
-  const socials: Social[] = await client.fetch(social);
 
   return {
     props: {
@@ -34,18 +30,17 @@ async function getData() {
       pageInformation,
       projects,
       skills,
-      socials,
     },
   };
 }
 
 export default async function Home() {
-  const { experiences, pageInformation, projects, skills, socials } = (
+  const { experiences, pageInformation, projects, skills } = (
     await getData()
   ).props;
+  
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
-      <Header socials={socials} />
       <main>
         <section id="hero" className="snap-start">
           <Hero pageInfo={pageInformation} />
@@ -69,7 +64,6 @@ export default async function Home() {
           <ThankYou />
         </section>
       </main>
-      <ChatButton />
     </div>
   );
 }

@@ -58,3 +58,10 @@ export interface Skill extends SanityBody {
   progress: number;
   title: string;
 }
+
+export interface PageDoc extends SanityBody {
+  _id: string;
+  slug: {
+    current: string;
+  };
+}
