@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { SocialIcon } from "react-social-icons";
 import { Social } from "@root/typings";
-import Image from 'next/image';
+import Image from "next/image";
 
 export type HeaderProps = {
   socials: Social[];
@@ -18,8 +18,15 @@ function Header({ socials }: HeaderProps) {
         transition={{ duration: 1.5 }}
         className="flex flex-row items-center"
       >
-        <Link href='/'>
-        <Image src="/PalmTechDraft_logo.png" alt='Home'width={50} height={50} className='p-2'/>
+        <Link href="/">
+          <div className="m-2 rounded-full border-2 hover:border-[#FB8500]">
+            <Image
+              src="/PalmTechDraft_logo.png"
+              alt="Home"
+              width={50}
+              height={50}
+            />
+          </div>
         </Link>
         {socials.map((social) => (
           <SocialIcon

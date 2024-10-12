@@ -12,6 +12,17 @@ export interface PortableTextProps extends Props {
 }
 
 const PortableTextComponents: Partial<PortableTextReactComponents> = {
+  block: {
+    h1: ({ children }) => <h1 className="text-4xl font-bold">{children}</h1>,
+    h2: ({ children }) => (
+      <h2 className="text-3xl font-semibold">{children}</h2>
+    ),
+    h3: ({ children }) => <h3 className="text-2xl font-medium">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl font-medium">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg font-medium">{children}</h5>,
+    h6: ({ children }) => <h6 className="text-base font-medium">{children}</h6>,
+    normal: ({ children }) => <p className="text-base">{children}</p>,
+  },
   list: {
     bullet: ({ children }) => (
       <ul className="list-inside list-[disc] space-y-2 pb-2">{children}</ul>

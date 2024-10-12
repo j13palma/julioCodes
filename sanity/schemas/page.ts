@@ -6,26 +6,26 @@ export default defineType({
   type: "document",
   fields: [
     {
+      name: "title",
+      title: "Title",
+      type: "string",
+    },
+    {
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      options: {
+        source: "metadata.title",
+        maxLength: 96,
+      },
+      description: "The URL-friendly version of a page's name or title.",
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: "portableText",
       title: "Portable Text",
       type: "object",
       fields: [
-        {
-          name: "title",
-          title: "Title",
-          type: "string",
-        },
-        {
-          name: "slug",
-          title: "Slug",
-          type: "slug",
-          options: {
-            source: "metadata.title",
-            maxLength: 96,
-          },
-          description: "The URL-friendly version of a page's name or title.",
-          validation: (Rule) => Rule.required(),
-        },
         {
           name: "alignment",
           title: "Alignment",
@@ -88,17 +88,6 @@ export default defineType({
                   },
                 ],
               },
-            },
-            {
-              type: "image",
-              fields: [
-                {
-                  name: "alt",
-                  title: "Alt Text",
-                  type: "string",
-                  validation: (Rule) => Rule.required(),
-                },
-              ],
             },
           ],
         },
