@@ -38,13 +38,13 @@ export default async function Page({ params }: PageProps) {
   const post = await fetchPost(params.slug[0]);
 
   if (!post) {
-    notFound(); // Handles cases where the slug isn't found
+    notFound();
   }
 
   return (
     <div className="z-0 h-screen snap-y snap-mandatory overflow-x-hidden overflow-y-scroll scroll-smooth scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white">
       <main>
-        <div className="pt-28">
+        <div className="px-8 pt-28">
           <PortableText value={post.portableText.value} />
         </div>
       </main>
