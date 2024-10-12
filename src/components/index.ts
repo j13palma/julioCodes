@@ -4,6 +4,8 @@ export * from "./Contact";
 export * from "./ExperienceCard";
 export * from "./Header";
 export * from "./Hero";
+export * from "./PortableText";
+export * from "./ProjectPage";
 export * from "./Projects";
 export * from "./PulsingCircles";
 export * from "./SectionTitle";

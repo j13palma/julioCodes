@@ -47,7 +47,7 @@ export default function Contact({ pageInfo }: ContactProps) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="relative mx-auto flex h-fit max-w-7xl flex-col items-center justify-start px-10 pb-0 pt-10 md:h-screen"
+      className="relative mx-auto flex h-fit max-w-7xl flex-col items-center justify-start px-10 pb-10 pt-10 md:h-screen"
     >
       <SectionTitle title="Contact Me" />
       <div className="mt-5 flex max-w-[280px] flex-col space-y-5 md:max-w-md lg:max-w-lg">
