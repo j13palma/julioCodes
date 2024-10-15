@@ -17,7 +17,7 @@ export default function ExperienceCard({ experience }: ExperienceCardProps) {
     });
 
   return (
-    <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden rounded-lg bg-[#B9C7DA] p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white hover:opacity-100 md:w-[600px] xl:max-w-[900px]">
+    <article className="flex h-full w-full max-w-[500px] flex-shrink-0 snap-center flex-col items-center justify-start space-y-7 overflow-y-auto overflow-x-hidden rounded-lg bg-[#B9C7DA] p-0 opacity-100 transition-opacity duration-200 scrollbar-thin scrollbar-track-[#023047]/40 scrollbar-thumb-white hover:opacity-100 md:w-[580px] xl:max-w-[900px]">
       <div>
         <div className="sticky top-0 z-10 max-w-[300px] bg-[#B9C7DA] px-5 pt-5 md:max-w-md lg:max-w-lg">
           <motion.div
